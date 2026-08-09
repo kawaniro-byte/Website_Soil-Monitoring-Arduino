@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Arduino Soil Moisture Monitoring System</title>
+
+    <!-- CSS -->
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="animations.css">
+   <link rel="stylesheet" href="responsive.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+<!-- ================= NAVIGATION ================= -->
+<header class="navbar">
+
+    <div class="logo">
+        <i class="fa-solid fa-seedling"></i>
+        SoilMonitor
+    </div>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#components">Components</a></li>
+            <li><a href="#instructions">Instructions</a></li>
+            <li><a href="#developers">Developers</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<!--================ HERO ================-->
+
+<section id="home" class="hero">
+
+    <!-- Floating Background Elements -->
+    <div class="floating leaf1"></div>
+    <div class="floating leaf2"></div>
+    <div class="floating leaf3"></div>
+
+    <div class="floating bubble1"></div>
+    <div class="floating bubble2"></div>
+    <div class="floating bubble3"></div>
+
+
+    <div class="hero-left">
+
+        <span class="badge">
+            <i class="fa-solid fa-seedling"></i> Smart Agriculture Project
+        </span>
+
+        <h1>
+            Soil Moisture
+            <span>Monitoring System</span>
+        </h1>
+
+        <p>
+
+            An Arduino-based monitoring system that measures soil
+            moisture in real time using a Soil Moisture Sensor,
+            LM393 Comparator Module, LEDs, and an I2C LCD Display.
+
+        </p>
+
+        <div class="hero-buttons">
+
+             <a href="#introduction" class="btn primary">
+                  <i class="fa-solid fa-circle-info"></i>
+                     Learn More
+             </a>
+
+             <a href="#components" class="btn secondary">
+                  <i class="fa-solid fa-microchip"></i>
+                     Explore Hardware
+             </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-right">
+
+       <div class="glass-card">
+
+           <div class="image-wrapper">
+
+                <img src="https://arduinokitproject.com/wp-content/uploads/2023/06/soil-moisture-sensor-arduino-tutorial.jpg"
+                     alt="Arduino Soil Moisture Monitoring Project">
+
+            </div>
+
+            <div class="image-label">
+                <i class="fa-solid fa-seedling"></i>
+                   Arduino Soil Monitoring
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Scroll Indicator -->
+
+    <a href="#introduction" class="scroll-down">
+
+        <span></span>
+
+    </a>
+
+</section>
+
+<!-- Decorative Wave -->
+<div class="wave">
+
+    <svg viewBox="0 0 1440 320">
+
+        <path fill="#ffffff"
+        d="M0,192L60,170.7C120,149,240,107,360,117.3C480,128,600,192,720,202.7C840,213,960,171,1080,149.3C1200,128,1320,128,1380,128L1440,128L1440,320L0,320Z">
+        </path>
+
+    </svg>
+
+</div>
+
+<!--================ INTRODUCTION ================-->
+
+<section id="introduction" class="introduction">
+
+    <div class="section-header">
+
+        <span class="section-tag">
+            ABOUT THE PROJECT
+        </span>
+
+        <h2>
+            Why Soil Moisture Monitoring Matters
+        </h2>
+
+    </div>
+
+    <div class="intro-container">
+
+        <!-- Left Side -->
+
+        <div class="intro-text">
+
+            <h3>
+                Smarter Plant Care Through Technology
+            </h3>
+
+            <p>
+
+                Maintaining the correct soil moisture level is one of the
+                most important factors in ensuring healthy plant growth.
+                Too much water can cause root rot, while too little water
+                can lead to dehydration and poor crop development.
+
+            </p>
+
+            <p>
+
+                This Soil Moisture Monitoring System uses an Arduino Uno,
+                a Soil Moisture Sensor, an LM393 Comparator Module,
+                LEDs, and an I2C LCD Display to continuously monitor
+                soil moisture levels.
+
+            </p>
+
+            <p>
+
+                The system provides real-time moisture readings,
+                displays the moisture percentage on the LCD,
+                and visually indicates whether the soil is
+                wet or dry using colored LEDs.
+                This allows users to make informed decisions
+                about when to water their plants.
+
+            </p>
+
+        </div>
+
+        <!-- Right Side -->
+
+        <div class="intro-image">
+
+            <img src="https://www.electronicwings.com/storage/PlatformSection/TopicContent/206/description/Soil%20Moisture%20Sensor%20Interfacing%20With%20Arduino.jpg"
+                 alt="Soil Moisture Monitoring">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--================ PROJECT OVERVIEW ================-->
+
+<section id="overview" class="overview">
+
+    <div class="section-header">
+
+        <span class="section-tag">
+            PROJECT OVERVIEW
+        </span>
+
+        <h2>
+            Key Features of the System
+        </h2>
+
+        <p>
+            The Soil Moisture Monitoring System combines hardware and software
+            to provide accurate, real-time monitoring for healthier plants.
+        </p>
+
+    </div>
+
+    <div class="overview-grid">
+
+        <div class="overview-card">
+            <i class="fa-solid fa-droplet"></i>
+            <h3>Real-Time Monitoring</h3>
+            <p>Continuously reads the soil moisture level for instant feedback.</p>
+        </div>
+
+        <div class="overview-card">
+            <i class="fa-solid fa-display"></i>
+            <h3>LCD Display</h3>
+            <p>Shows the current moisture percentage and soil condition on the LCD display.</p>
+        </div>
+
+        <div class="overview-card">
+            <i class="fa-solid fa-lightbulb"></i>
+            <h3>LED Indicators</h3>
+            <p>Green indicates wet soil, and yellow for humid, while red indicates dry soil.</p>
+        </div>
+
+        <div class="overview-card">
+            <i class="fa-solid fa-microchip"></i>
+            <h3>Arduino Uno</h3>
+            <p>Processes sensor data and controls every connected component.</p>
+        </div>
+
+        <div class="overview-card">
+            <i class="fa-solid fa-seedling"></i>
+            <h3>Healthy Plant Care</h3>
+            <p>Helps users decide the right time to water their plants.</p>
+        </div>
+
+        <div class="overview-card">
+            <i class="fa-solid fa-bolt"></i>
+            <h3>Fast Response</h3>
+            <p>Updates the LCD and LEDs instantly whenever moisture changes.</p>
+        </div>
+
+        <div class="overview-card">
+           <i class="fa-solid fa-code"></i>
+           <h3>Arduino Programming</h3>
+           <p>Uses Arduino IDE to program the microcontroller for sensor reading and output control.</p>
+        </div>
+
+        <div class="overview-card">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h3>Educational Value</h3>
+            <p>Demonstrates the integration of electronics, sensors, and programming in a practical project.</p>
+
+    </div>
+
+</section>
+
+<!--================ COMPONENTS ================-->
+
+<section class="components" id="components">
+
+    <div class="section-header">
+
+        <span class="section-tag">
+            HARDWARE COMPONENTS
+        </span>
+
+        <h2>Explore the Hardware</h2>
+
+        <p>
+            Learn about every component used to build the
+            Soil Moisture Monitoring System.
+        </p>
+
+    </div>
+
+    <div class="hardware-slider">
+
+        <!-- Previous -->
+        <button class="prev-slide">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <!-- Slides -->
+        <div class="slides">
+
+            <!-- Arduino -->
+            <div class="slide active">
+
+                <div class="slide-image">
+                    <img src="https://cdn.pixabay.com/photo/2017/03/23/12/32/arduino-2168193_1280.png" alt="Arduino Uno">
+                </div>
+
+                <div class="slide-content">
+
+                    <span>01 / 07</span>
+
+                    <h2>Arduino Uno</h2>
+
+                    <p>
+                        The main controller of the entire
+                        monitoring system.
+                    </p>
+
+                    <ul>
+                        <li>Reads the Soil Sensor</li>
+                        <li>Processes Data</li>
+                        <li>Controls LEDs</li>
+                        <li>Updates LCD</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <!-- Soil Moisture Sensor -->
+            <div class="slide">
+
+                <div class="slide-image">
+                    <img src="https://i.ibb.co/s9vwXPNv/soil-moisture-sensor-water-content-dampness-removebg-preview.png"
+                         alt="Soil Moisture Sensor">
+                </div>
+
+                <div class="slide-content">
+
+                    <span>02 / 07</span>
+
+                    <h2>Soil Moisture Sensor</h2>
+
+                    <p>
+                        Measures the moisture level in the soil
+                        and sends the data to the Arduino.
+                    </p>
+
+                    <ul>
+                        <li>Analog Output</li>
+                        <li>Digital Output</li>
+                        <li>Easy to Use</li>
+                        <li>Durable Design</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <!-- LM393 -->
+            <div class="slide">
+
+                <div class="slide-image">
+                     <img src="https://i.ibb.co/0VKDbpM1/Optical-Sensitive-Resistance-Light-Detection-Photosensitive-Sensor-Module-for-arduino-4pin-DIY-Kit-3.png"
+                          alt="LM393 Comparator Module">
+                </div>
+
+                <div class="slide-content">
+
+                    <span>03 / 07</span>
+
+                    <h2>LM393 Comparator Module</h2>
+
+                    <p>
+                        Compares the soil moisture value with a
+                        predefined threshold and outputs a signal.
+                    </p>
+
+                    <ul>
+                        <li>Adjustable Threshold</li>
+                        <li>Digital Output</li>
+                        <li>Indicator LED</li>
+                        <li>Compact Size</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <!-- LCD -->
+            <div class="slide">
+
+                <div class="slide-image">
+                     <img src="https://i.ibb.co/X6ntdLb/hd44780-1602-lcd-modul-display-bundle-mit-i2c-schnittstelle-2x16-zeichen-kompatibel-mit-arduino-und.png"
+                          alt="16x2 I2C LCD Display">
+                </div>
+
+                <div class="slide-content">
+
+                    <span>04 / 07</span>
+
+                    <h2>16x2 I2C LCD Display</h2>
+
+                    <p>
+                        Shows the current soil moisture level and other
+                        important information.
+                    </p>
+
+                    <ul>
+                        <li>16x2 Character Display</li>
+                        <li>I2C Interface</li>
+                        <li>Blue Backlight</li>
+                        <li>Low Power Consumption</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <!-- LEDs -->
+            <div class="slide">
+
+                <div class="slide-image">
+                    <img src="https://cdn.pixabay.com/photo/2017/04/29/05/56/led-2270087_1280.png" alt="LED Indicators">
+                </div>
+
+                <div class="slide-content">
+
+                    <span>05 / 07</span>
+
+                    <h2>LED Indicators</h2>
+
+                    <p>
+                        Provide visual feedback on the soil moisture
+                        condition.
+                    </p>
+
+                    <ul>
+                        <li>Green LED for Wet Soil</li>
+                        <li>Red LED for Dry Soil</li>
+                        <li>Low Power Usage</li>
+                        <li>Easy to Connect</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <!-- Breadboard -->
+            <div class="slide">
+
+                <div class="slide-image">
+                    <img src="https://www.pngkey.com/png/full/208-2080299_arduino-png.png" alt="Breadboard">
+                </div>
+
+                <div class="slide-content">
+
+                    <span>06 / 07</span>
+
+                    <h2>Breadboard</h2>
+
+                    <p>
+                        Allows for easy and temporary connections
+                        between components without soldering.
+                    </p>
+
+                    <ul>
+                        <li>Reusable</li>
+                        <li>No Soldering Required</li>
+                        <li>Supports Multiple Components</li>
+                        <li>Compact Design</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <!-- Jumper Wires -->
+            <div class="slide">
+
+                <div class="slide-image">
+                    <img src="https://mehackit.org/img/global/components/jumper_wires.png" alt="Jumper Wires">
+                </div>
+
+                <div class="slide-content">
+
+                    <span>07 / 07</span>
+
+                    <h2>Jumper Wires</h2>
+
+                    <p>
+                        Used to make connections between the Arduino,
+                        sensors, and other components on the breadboard.
+                    </p>
+
+                    <ul>
+                        <li>Flexible and Durable</li>
+                        <li>Various Lengths</li>
+                        <li>Easy to Use</li>
+                        <li>Supports Multiple Connections</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Next -->
+        <button class="next-slide">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="slider-dots">
+
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+
+    </div>
+
+</section>
+
+<!--================ WIRING ================-->
+
+<section class="wiring" id="wiring">
+
+    <div class="section-header">
+
+        <span class="section-tag">
+            WIRING DIAGRAM
+        </span>
+
+        <h2>
+            Hardware Connections
+        </h2>
+
+        <p>
+            The following diagram illustrates how every component is connected
+            to the Arduino Uno.
+        </p>
+
+    </div>
+
+    <div class="wiring-container">
+
+        <div class="diagram">
+
+            <img src="https://i.ibb.co/XZNShpmv/Screenshot-2026-08-09-131552.png"
+                 alt="Arduino Wiring Diagram">
+
+        </div>
+
+        <div class="pin-table">
+
+            <table>
+
+                <tr>
+                    <th>Arduino Pin</th>
+                    <th>Connected Component</th>
+                </tr>
+
+                <tr>
+                    <td>A0</td>
+                    <td class="pad">Soil Moisture Sensor (Analog)</td>
+                </tr>
+
+                <tr>
+                    <td>D2</td>
+                    <td class="pad">LM393 Comparator Module</td>
+                </tr>
+
+                <tr>
+                    <td>D7</td>
+                    <td class="pad">Green LED</td>
+                </tr>
+
+                <tr>
+                    <td>D8</td>
+                    <td class="pad">Yellow LED</td>
+
+                <tr>
+                    <td>D13</td>
+                    <td class="pad">Red LED</td>
+                </tr>
+
+                <tr>
+                    <td>A4</td>
+                    <td class="pad">I2C LCD SDA</td>
+                </tr>
+
+                <tr>
+                    <td>A5</td>
+                    <td class="pad">I2C LCD SCL</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--================ HOW IT WORKS ================-->
+
+<section class="how-it-works" id="how-it-works">
+
+    <div class="section-header">
+
+        <span class="section-tag">
+            HOW IT WORKS
+        </span>
+
+        <h2>
+            From Soil to Information
+        </h2>
+
+        <p>
+            The system continuously monitors the moisture level of the soil,
+            processes the sensor readings, and provides clear feedback to the user.
+        </p>
+
+    </div>
+
+
+    <div class="workflow">
+
+        <!-- Step 1 -->
+
+        <div class="workflow-step">
+
+            <div class="workflow-icon">
+                <i class="fa-solid fa-seedling"></i>
+            </div>
+
+            <div class="workflow-number">
+                01
+            </div>
+
+            <div class="workflow-content">
+
+                <span>INPUT</span>
+
+                <h3>
+                    Soil Moisture
+                </h3>
+
+                <p>
+                    The soil contains different amounts of moisture
+                    depending on its current condition.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Connector -->
+
+        <div class="workflow-line"></div>
+
+
+        <!-- Step 2 -->
+
+        <div class="workflow-step">
+
+            <div class="workflow-icon">
+                <i class="fa-solid fa-droplet"></i>
+            </div>
+
+            <div class="workflow-number">
+                02
+            </div>
+
+            <div class="workflow-content">
+
+                <span>SENSOR</span>
+
+                <h3>
+                    Moisture Detection
+                </h3>
+
+                <p>
+                    The soil moisture sensor detects the electrical
+                    conductivity of the soil and produces an analog reading.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="workflow-line"></div>
+
+
+        <!-- Step 3 -->
+
+        <div class="workflow-step">
+
+            <div class="workflow-icon">
+                <i class="fa-solid fa-microchip"></i>
+            </div>
+
+            <div class="workflow-number">
+                03
+            </div>
+
+            <div class="workflow-content">
+
+                <span>PROCESSING</span>
+
+                <h3>
+                    Arduino Processes the Data
+                </h3>
+
+                <p>
+                    The Arduino reads the sensor value from the analog
+                    input and converts it into a moisture percentage.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="workflow-line"></div>
+
+
+        <!-- Step 4 -->
+
+        <div class="workflow-step">
+
+            <div class="workflow-icon">
+                <i class="fa-solid fa-chart-simple"></i>
+            </div>
+
+            <div class="workflow-number">
+                04
+            </div>
+
+            <div class="workflow-content">
+
+                <span>ANALYSIS</span>
+
+                <h3>
+                    Determine Soil Condition
+                </h3>
+
+                <p>
+                    The moisture percentage is evaluated to determine
+                    whether the soil is dry, humid, or wet.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="workflow-line"></div>
+
+
+        <!-- Step 5 -->
+
+        <div class="workflow-step">
+
+            <div class="workflow-icon">
+                <i class="fa-solid fa-display"></i>
+            </div>
+
+            <div class="workflow-number">
+                05
+            </div>
+
+            <div class="workflow-content">
+
+                <span>OUTPUT</span>
+
+                <h3>
+                    LCD Displays the Result
+                </h3>
+
+                <p>
+                    The LCD displays the current moisture percentage
+                    and the corresponding soil status.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="workflow-line"></div>
+
+
+        <!-- Step 6 -->
+
+        <div class="workflow-step">
+
+            <div class="workflow-icon">
+                <i class="fa-solid fa-lightbulb"></i>
+            </div>
+
+            <div class="workflow-number">
+                06
+            </div>
+
+            <div class="workflow-content">
+
+                <span>INDICATOR</span>
+
+                <h3>
+                    LED Status Indicator
+                </h3>
+
+                <p>
+                    The LED indicators provide a quick visual representation
+                    of the soil condition.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Status Summary -->
+
+<!--================ SOIL STATUS ================-->
+
+<div class="soil-status">
+
+    <h3>
+        Understanding the Moisture Levels
+    </h3>
+
+    <p>
+        The system converts the sensor reading into a moisture
+        percentage and assigns a corresponding soil condition.
+    </p>
+
+    <div class="status-grid">
+
+        <!-- Start -->
+
+        <div class="status-card start">
+
+            <div class="status-icon">
+                <i class="fa-solid fa-power-off"></i>
+            </div>
+
+            <h4>
+                Start the System
+            </h4>
+
+            <strong>
+                0%
+            </strong>
+
+            <p>
+                Prepare water and begin monitoring the soil.
+            </p>
+
+        </div>
+
+
+        <!-- Very Dry -->
+
+        <div class="status-card very-dry">
+
+            <div class="status-icon">
+                <i class="fa-solid fa-sun"></i>
+            </div>
+
+            <h4>
+                Very Dry
+            </h4>
+
+            <strong>
+                1% – 20%
+            </strong>
+
+            <p>
+                The soil is very dry and needs water.
+            </p>
+
+        </div>
+
+
+        <!-- Dry -->
+
+        <div class="status-card dry">
+
+            <div class="status-icon">
+                <i class="fa-solid fa-droplet"></i>
+            </div>
+
+            <h4>
+                Dry
+            </h4>
+
+            <strong>
+                21% – 40%
+            </strong>
+
+            <p>
+                The soil is dry. Watering will soon be needed.
+            </p>
+
+        </div>
+
+
+        <!-- Humid -->
+
+        <div class="status-card humid">
+
+            <div class="status-icon">
+                <i class="fa-solid fa-cloud"></i>
+            </div>
+
+            <h4>
+                Humid
+            </h4>
+
+            <strong>
+                41% – 59%
+            </strong>
+
+            <p>
+                The soil has a good moisture condition.
+            </p>
+
+        </div>
+
+
+        <!-- Wet -->
+
+        <div class="status-card wet">
+
+            <div class="status-icon">
+                <i class="fa-solid fa-water"></i>
+            </div>
+
+            <h4>
+                Wet
+            </h4>
+
+            <strong>
+                60% – 80%
+            </strong>
+
+            <p>
+                The soil has sufficient moisture and is considered healthy.
+            </p>
+
+        </div>
+
+
+        <!-- Very Wet -->
+
+        <div class="status-card very-wet">
+
+            <div class="status-icon">
+                <i class="fa-solid fa-cloud-rain"></i>
+            </div>
+
+            <h4>
+                Very Wet
+            </h4>
+
+            <strong>
+                81% – 100%
+            </strong>
+
+            <p>
+                The soil may be overwatered.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!--================ CODE ================-->
+
+<section class="code-section" id="code">
+
+    <div class="section-header">
+
+        <span class="section-tag">
+            SOURCE CODE
+        </span>
+
+        <h2>
+            The Code Behind the System
+        </h2>
+
+        <p>
+            The Arduino program processes the sensor readings,
+            determines the soil condition, and controls the
+            LCD display and LED indicators.
+        </p>
+
+    </div>
+
+
+    <div class="code-container">
+
+        <!-- Code Header -->
+
+        <div class="code-header">
+
+            <div class="code-title">
+
+                <span class="code-dot red"></span>
+                <span class="code-dot yellow"></span>
+                <span class="code-dot green"></span>
+
+                <span class="file-name">
+                    soil_monitor.ino
+                </span>
+
+            </div>
+
+
+            <div class="code-actions">
+
+                <span class="language">
+                    C++ / Arduino
+                </span>
+
+                <button
+                    class="copy-code"
+                    id="copyCode">
+
+                    <i class="fa-regular fa-copy"></i>
+
+                    Copy Code
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Code Window -->
+
+        <div class="code-window">
+
+<pre><code id="arduinoCode">#include &lt;Wire.h&gt;
+#include &lt;hd44780.h&gt;
+#include &lt;hd44780ioClass/hd44780_I2Cexp.h&gt;
+
+hd44780_I2Cexp lcd;
+
+//==============================
+// Pins
+//==============================
+const int moisturePin = A0;
+const int digitalPin  = 2;
+
+const int redLED = 13;
+const int yellowLED = 8;
+const int greenLED = 7;
+
+//==============================
+// Calibration
+//==============================
+const int dryValue = 903;
+const int wetValue = 350;
+
+//==============================
+// Timing
+//==============================
+const unsigned long screenInterval = 3000;
+const unsigned long stableDelay = 10000;
+
+//==============================
+// Variables
+//==============================
+unsigned long previousScreenMillis = 0;
+unsigned long lastChangeMillis = 0;
+
+bool screenOneActive = true;
+
+bool displayLocked = false;
+bool lockScreen1 = false;
+bool lockScreen2 = false;
+
+int moistureValue = 0;
+int moisturePercent = 0;
+int lastMoisturePercent = -1;
+
+String status = "";
+String advice = "";
+
+//==============================
+// LCD Icons
+//==============================
+
+// Plant
+byte plant[8] =
+{
+    B00100,
+    B01110,
+    B10101,
+    B00100,
+    B00100,
+    B01110,
+    B00100,
+    B00000
+};
+
+// Water Drop
+byte water[8] =
+{
+    B00100,
+    B00100,
+    B01110,
+    B11111,
+    B11111,
+    B11111,
+    B01110,
+    B00000
+};
+
+//==============================
+// Function Prototypes
+//==============================
+void startupScreen();
+void loadingScreen();
+
+void readSensor();
+void updateStatus();
+void updateLEDs();
+void updateDisplayMode();
+
+void showScreen1();
+void showScreen2();
+void updateLCD();
+
+void setup()
+{
+    Serial.begin(9600);
+
+    pinMode(redLED, OUTPUT);
+    pinMode(yellowLED, OUTPUT);
+    pinMode(greenLED, OUTPUT);
+
+    pinMode(digitalPin, INPUT);
+
+    lcd.begin(16, 2);
+
+    lcd.createChar(0, plant);
+    lcd.createChar(1, water);
+
+    startupScreen();
+    loadingScreen();
+}
+
+void startupScreen()
+{
+    lcd.clear();
+
+    lcd.setCursor(0, 0);
+    lcd.write(byte(0));
+    lcd.print(" Smart Soil");
+
+    lcd.setCursor(0, 1);
+    lcd.write(byte(1));
+    lcd.print(" Monitor");
+
+    delay(2500);
+}
+
+void loadingScreen()
+{
+    lcd.clear();
+
+    lcd.setCursor(0, 0);
+    lcd.print("Initializing");
+
+    lcd.setCursor(0, 1);
+
+    for(int i = 0; i < 16; i++)
+    {
+        lcd.write(byte(255));
+        delay(120);
+    }
+
+    delay(600);
+
+    lcd.clear();
+}
+
+//----------------------------------------------------
+// Read Soil Moisture Sensor
+//----------------------------------------------------
+void readSensor()
+{
+    long total = 0;
+
+    // Average 10 readings for stable values
+    for(int i = 0; i < 10; i++)
+    {
+        total += analogRead(moisturePin);
+        delay(5);
+    }
+
+    moistureValue = total / 10;
+
+    moisturePercent =
+        map(moistureValue, dryValue, wetValue, 0, 100);
+
+    moisturePercent =
+        constrain(moisturePercent, 0, 100);
+}
+
+//----------------------------------------------------
+// Determine Soil Status
+//----------------------------------------------------
+void updateStatus()
+{
+    if(moisturePercent == 0)
+    {
+        status = "Start the System.";
+        advice = "Prepare Water";
+    }
+    else if(moisturePercent >= 1 &&
+            moisturePercent <= 20)
+    {
+        status = "Very Dry";
+        advice = "Need water";
+    }
+    else if(moisturePercent <= 40)
+    {
+        status = "Dry";
+        advice = "Water Soon";
+    }
+    else if(moisturePercent <= 59)
+    {
+        status = "Humid";
+        advice = "Good Cond.";
+    }
+    else if(moisturePercent <= 80)
+    {
+        status = "Wet";
+        advice = "Healthy";
+    }
+    else
+    {
+        status = "Very Wet";
+        advice = "Overwater";
+    }
+}
+
+//----------------------------------------------------
+// LED Control
+//----------------------------------------------------
+void updateLEDs()
+{
+    digitalWrite(redLED, LOW);
+    digitalWrite(yellowLED, LOW);
+    digitalWrite(greenLED, LOW);
+
+    if(moisturePercent <= 40)
+    {
+        digitalWrite(redLED, HIGH);
+    }
+    else if(moisturePercent <= 59)
+    {
+        digitalWrite(yellowLED, HIGH);
+    }
+    else
+    {
+        digitalWrite(greenLED, HIGH);
+    }
+}
+
+//----------------------------------------------------
+// Smart Display Mode
+//----------------------------------------------------
+void updateDisplayMode()
+{
+    // Detect moisture change
+    if(moisturePercent != lastMoisturePercent)
+    {
+        lastMoisturePercent = moisturePercent;
+
+        lastChangeMillis = millis();
+
+        displayLocked = false;
+        lockScreen1 = false;
+        lockScreen2 = false;
+    }
+
+    // Lock after stable for 10 seconds
+    if(!displayLocked &&
+       millis() - lastChangeMillis >= stableDelay)
+    {
+        displayLocked = true;
+
+        lockScreen1 = false;
+        lockScreen2 = false;
+
+        if(moisturePercent == 0)
+        {
+            lockScreen1 = true;
+        }
+        else if(moisturePercent >= 10)
+        {
+            lockScreen2 = true;
+        }
+    }
+
+    // Serial Monitor
+    Serial.print("Analog: ");
+    Serial.print(moistureValue);
+
+    Serial.print("  Moisture: ");
+    Serial.print(moisturePercent);
+    Serial.print("%");
+
+    Serial.print("  Status: ");
+    Serial.print(status);
+
+    Serial.print("  Locked: ");
+
+    if(displayLocked)
+        Serial.println("YES");
+    else
+        Serial.println("NO");
+}
+
+//----------------------------------------------------
+// Screen 1
+//----------------------------------------------------
+void showScreen1()
+{
+    lcd.setCursor(0, 0);
+    lcd.print("Soil Monitor   ");
+
+    lcd.setCursor(0, 1);
+
+    lcd.print("Moist:");
+
+    if(moisturePercent < 10)
+        lcd.print(" ");
+
+    if(moisturePercent < 100)
+        lcd.print(" ");
+
+    lcd.print(moisturePercent);
+    lcd.print("%   ");
+}
+
+//----------------------------------------------------
+// Screen 2
+//----------------------------------------------------
+void showScreen2()
+{
+    lcd.setCursor(0, 0);
+    lcd.print("                ");
+
+    lcd.setCursor(0, 0);
+
+    lcd.print("Status:");
+    lcd.print(status);
+
+    lcd.setCursor(0, 1);
+    lcd.print("                ");
+
+    lcd.setCursor(0, 1);
+
+    lcd.print(advice);
+}
+
+//----------------------------------------------------
+// LCD Manager
+//----------------------------------------------------
+void updateLCD()
+{
+    static bool lastScreen = true;
+    static bool lastLocked = false;
+
+    if(displayLocked)
+    {
+        if(lastLocked == false)
+        {
+            lcd.clear();
+            lastLocked = true;
+        }
+
+        if(lockScreen1)
+        {
+            showScreen1();
+        }
+        else if(lockScreen2)
+        {
+            showScreen2();
+        }
+
+        return;
+    }
+
+    lastLocked = false;
+
+    if(millis() - previousScreenMillis >= screenInterval)
+    {
+        previousScreenMillis = millis();
+
+        screenOneActive = !screenOneActive;
+
+        lcd.clear();
+    }
+
+    if(screenOneActive)
+        showScreen1();
+    else
+        showScreen2();
+}
+
+void loop()
+{
+    readSensor();
+
+    updateStatus();
+
+    updateLEDs();
+
+    updateDisplayMode();
+
+    updateLCD();
+}
+</code></pre>
+
+</div>
+    </div>
+
+    <!-- Code Explanation -->
+
+    <div class="code-explanation">
+
+        <div class="code-info">
+
+            <span class="section-tag">
+                CODE OVERVIEW
+            </span>
+
+            <h3>
+                How the Program Works
+            </h3>
+
+            <p>
+                The program reads the analog value from the soil
+                moisture sensor and converts it into a percentage.
+                The percentage is then used to determine the current
+                condition of the soil.
+            </p>
+
+        </div>
+
+
+        <div class="code-features">
+
+            <div class="code-feature">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+
+                <div>
+
+                    <h4>
+                        Sensor Reading
+                    </h4>
+
+                    <p>
+                        Reads the moisture level through analog pin A0.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="code-feature">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-calculator"></i>
+                </div>
+
+                <div>
+
+                    <h4>
+                        Data Processing
+                    </h4>
+
+                    <p>
+                        Converts the sensor reading into a moisture percentage.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="code-feature">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <div>
+
+                    <h4>
+                        Status Detection
+                    </h4>
+
+                    <p>
+                        Determines whether the soil is very dry, dry,
+                        humid, wet, or very wet.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="code-feature">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-display"></i>
+                </div>
+
+                <div>
+
+                    <h4>
+                        User Feedback
+                    </h4>
+
+                    <p>
+                        Sends the results to the LCD and LED indicators.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--================ USER GUIDE ================-->
+
+<section class="guide" id="instructions">
+
+    <div class="section-header">
+
+        <span class="section-tag">
+            USER GUIDE
+        </span>
+
+        <h2>
+            How to Use the System
+        </h2>
+
+        <p>
+            Follow these simple steps to operate the Soil Moisture Monitoring
+            System.
+        </p>
+
+    </div>
+
+    <div class="timeline">
+
+        <div class="step">
+
+            <div class="step-number">1</div>
+
+            <div class="step-content">
+
+                <h3>Assemble the Circuit</h3>
+
+                <p>
+                    Connect all hardware components according to the wiring diagram.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-number">2</div>
+
+            <div class="step-content">
+
+                <h3>Upload the Arduino Code</h3>
+
+                <p>
+                    Open the Arduino IDE, verify the sketch, and upload it to the Arduino Uno.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-number">3</div>
+
+            <div class="step-content">
+
+                <h3>Power the System</h3>
+
+                <p>
+                    Connect the Arduino Uno to your computer or a compatible power source.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-number">4</div>
+
+            <div class="step-content">
+
+                <h3>Insert the Sensor</h3>
+
+                <p>
+                    Place the soil moisture sensor into the soil near the plant's roots.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-number">5</div>
+
+            <div class="step-content">
+
+                <h3>Read the LCD Display</h3>
+
+                <p>
+                    Observe the moisture percentage and current soil status shown on the LCD.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-number">6</div>
+
+            <div class="step-content">
+
+                <h3>Interpret the LED Indicators</h3>
+
+                <p>
+                    Green LED indicates sufficient moisture, and yellow LED indicates moderate moisture, while the red LED indicates that watering is recommended.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--================ DEVELOPERS ================-->
+
+<section class="developer" id="developers">
+
+    <div class="section-header">
+
+        <span class="section-tag">
+            THE DEVELOPER
+        </span>
+
+        <h2>
+            Meet the Developer
+        </h2>
+
+        <p>
+            This project was designed and developed as part of an academic project,
+            combining hardware and software to create a smart soil moisture
+            monitoring system.
+        </p>
+
+    </div>
+
+    <div class="developer-card">
+
+        <div class="developer-image">
+
+            <img src="https://i.ibb.co/bjKgyvxJ/marvels-spider-man-pc-4k-jf-1920x1080.jpg"
+                 alt="Developer">
+
+        </div>
+
+        <div class="developer-info">
+
+            <h2>Jeru Barrameda</h2>
+
+            <h3>BS Information Technology</h3>
+
+            <h4>University of Cabuyao</h4>
+
+            <p>
+
+                Passionate about software development, embedded systems,
+                and creating practical technology solutions through
+                programming and electronics.
+
+            </p>
+
+            <div class="skills">
+
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span>Arduino IDE</span>
+                <span>C++</span>
+                <span>Electronics</span>
+
+            </div>
+
+            <blockquote>
+
+                "Creating solutions through technology."
+
+            </blockquote>
+
+            <div class="socials">
+
+                <a href="https://github.com/kawaniro-byte/Website_Soil-Monitoring-Arduino">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+
+                <a href="https://www.facebook.com/share/18pF5jEkU2/">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+
+                <a href="mailto:kawaniro@gmail.com">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--================ FOOTER ================-->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <!-- Logo -->
+
+        <div class="footer-box">
+
+            <h2>AquaLert 🌱</h2>
+
+            <p>
+
+                A smart soil moisture monitoring system designed
+                to help users monitor soil conditions through
+                Arduino technology.
+
+            </p>
+
+        </div>
+
+        <!-- Navigation -->
+
+        <div class="footer-box">
+
+            <h3>Quick Links</h3>
+
+            <ul>
+
+                <li><a href="#home">Home</a></li>
+
+                <li><a href="#introduction">Introduction</a></li>
+
+                <li><a href="#hardware">Hardware</a></li>
+
+                <li><a href="#wiring">Wiring</a></li>
+
+                <li><a href="#guide">Instructions</a></li>
+
+                <li><a href="#developer">Developer</a></li>
+
+            </ul>
+
+        </div>
+
+        <!-- Technologies -->
+
+        <div class="footer-box">
+
+            <h3>Technologies</h3>
+
+            <ul>
+
+                <li>HTML5</li>
+
+                <li>CSS3</li>
+
+                <li>JavaScript</li>
+
+                <li>Arduino IDE</li>
+
+                <li>C++</li>
+
+            </ul>
+
+        </div>
+
+        <!-- Contact -->
+
+        <div class="footer-box">
+
+            <h3>Connect</h3>
+
+            <div class="footer-social">
+
+                <a href="https://github.com/kawaniro-byte/Website_Soil-Monitoring-Arduino">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+
+                <a href="https://www.facebook.com/share/18pF5jEkU2/">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+
+                <a href="mailto:kawaniro@gmail.com">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        
+        <p>
+
+            © 2026 AquaLert | Developed by
+            <strong>Jeru Barrameda</strong>
+
+        </p>
+
+    </div>
+
+</footer>
+
+<a href="#home" class="scroll-top">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</a>
+
+    <script src="script.js"></script>
+    <script src="scroll.js"></script>
+    <script src="hardware.js"></script>
+
+</body>
+
+</html>
